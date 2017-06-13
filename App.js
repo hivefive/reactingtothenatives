@@ -16,8 +16,10 @@ function getSiteNav (title) {
         },
         header: () => {
             return (
-                <View>
-                    
+                <View style={styles.topHeader}>
+                    <Image source={require('./assets/oecqndsg.png')} style={styles.bImage} >
+                        <Text style={styles.headerh1}>topHeader</Text>
+                    </Image>
                 </View>
             )
         }
@@ -27,7 +29,7 @@ function getSiteNav (title) {
 class Button extends React.Component {
     render() {
         return (
-            <TouchableHighlight onPress={() => { this.props.onPress() }}>
+            <TouchableHighlight onPress={() => { this.props.onPress() }} underlayColor='#fff'>
                 <View style={styles.aboutBtn}>
                     <Text style={styles.aboutBtnText}>{this.props.title}</Text>
                 </View>
@@ -46,32 +48,36 @@ class HomeScreen extends React.Component {
                 style={styles.container}
                 initialPage={0}>
                 <View style={styles.pageStyle}>
-                    <View style={styles.buttonWrapper}>
-                        <Button
-                            style={styles.aboutBtn}
-                            title="About"
-                            onPress={() => navigate('About')}
-                        />
-                        <Button
-                            style={styles.aboutBtn}
-                            title="Contact"
-                            onPress={() => navigate('Contact')}
-                        />
-                    </View>
+                    <Image source={require('./assets/icbmqjdu.png')} style={styles.bImage} >
+                        <View style={styles.buttonWrapper}>
+                            <Button
+                                style={styles.aboutBtn}
+                                title="About"
+                                onPress={() => navigate('About')}
+                            />
+                            <Button
+                                style={styles.aboutBtn}
+                                title="Contact"
+                                onPress={() => navigate('Contact')}
+                            />
+                        </View>
+                    </Image>
                 </View>
                 <View style={styles.pageStyle}>
-                    <LinearGradient colors={['#4c669f', '#3b5998', '#192f6a']} style={styles.linearGradient}>
-                        <Text style={styles.HeaderText}>Second page</Text>
-                    </LinearGradient>
+                    <Image source={require('./assets/icbmqjdu.png')} style={styles.bImage} >
+                        <Text style={styles.h1}>Second page</Text>
+                    </Image>
                 </View>
                 <View style={styles.pageStyle}>
-                    <Image source={require('./assets/W6Qnzwf.jpg')} style={{ width: 432, height: 540 }} />
+                    <Image source={require('./assets/W6Qnzwf.jpg')} style={styles.bImage} />
                 </View>
                 <View style={styles.pageStyle}>
-                    <Image source={require('./assets/ny.jpg')} style={{ width: 432, height: 540 }} />
+                    <Image source={require('./assets/ny.jpg')} style={ styles.bImage } >
+                        <Text style={styles.h1}>NEW YORK</Text>
+                    </Image>
                 </View>
                 <View style={styles.pageStyle}>
-                    <Image source={require('./assets/12352.jpg')} style={{ width: 432, height: 540 }} />
+                    <Image source={require('./assets/12352.jpg')} style={styles.bImage} />
                 </View>
             </ViewPagerAndroid>
         );
@@ -83,7 +89,16 @@ class AboutScreen extends React.Component {
     render() {
         return (
             <View style={styles.pageStyle}>
-                <Text style={styles.HeaderText}>ABOUT</Text>
+                <Image source={require('./assets/icbmqjdu.png')} style={styles.maxImg}>
+                    <View style={styles.textWrapper}>
+                        <Text style={styles.h1}>ABOUT</Text>
+                        <Text style={{color: '#fff', marginTop: 15}}>This is where an about text would be placed. There would here sit an explanation of this application or of something entirely different.</Text>
+                        <Text style={{ color: '#fff', marginTop: 15 }}>This is where an about text would be placed. There would here sit an explanation of this application or of something entirely different.</Text>
+                        <Text style={{ color: '#fff', marginTop: 15 }}>This is where an about text would be placed. There would here sit an explanation of this application or of something entirely different.</Text>
+                        <Text style={{ color: '#fff', marginTop: 15 }}>This is where an about text would be placed. There would here sit an explanation of this application or of something entirely different.</Text>
+                        <Text style={{ color: '#fff', marginTop: 15 }}>This is where an about text would be placed. There would here sit an explanation of this application or of something entirely different.</Text>
+                    </View>
+                </Image>
             </View>
         )
     }
@@ -93,12 +108,34 @@ class ContactScreen extends React.Component {
     static navigationOptions = getSiteNav('Contact');
     render() {
         return (
-            <View style={styles.pageStyle}>
-                <Text style={styles.HeaderText}>Christoffer Bäckström</Text>
-                <Text style={styles.HeaderText}>test@test.com</Text>
-                <Text style={styles.HeaderText}>070-1444553</Text>
-                <Text style={styles.HeaderText}>65432 Karlstad</Text>
-            </View>
+            <ScrollView style={styles.pageStyle}>
+                <Image source={require('./assets/icbmqjdu.png')} style={styles.bImage}>
+                    <View style={styles.contactInfo}>
+                        <Text style={styles.h1}>Christoffer Bäckström</Text>
+                        <Text style={styles.h1}>test@test.com</Text>
+                        <Text style={styles.h1}>070-1444553</Text>
+                        <Text style={styles.h1}>65432 Karlstad</Text>
+                    </View>
+                    <View style={styles.contactInfo}>
+                        <Text style={styles.h1}>Christoffer Bäckström</Text>
+                        <Text style={styles.h1}>test@test.com</Text>
+                        <Text style={styles.h1}>070-1444553</Text>
+                        <Text style={styles.h1}>65432 Karlstad</Text>
+                    </View>
+                    <View style={styles.contactInfo}>
+                        <Text style={styles.h1}>Christoffer Bäckström</Text>
+                        <Text style={styles.h1}>test@test.com</Text>
+                        <Text style={styles.h1}>070-1444553</Text>
+                        <Text style={styles.h1}>65432 Karlstad</Text>
+                    </View>
+                    <View style={styles.contactInfo}>
+                        <Text style={styles.h1}>Christoffer Bäckström</Text>
+                        <Text style={styles.h1}>test@test.com</Text>
+                        <Text style={styles.h1}>070-1444553</Text>
+                        <Text style={styles.h1}>65432 Karlstad</Text>
+                    </View>
+                </Image>
+            </ScrollView>
         )
     }
 }
@@ -110,11 +147,30 @@ export default App = StackNavigator ({
 });
 
 const styles = StyleSheet.create({
+    textWrapper: {
+        flex: 1,
+        padding: 15,
+        marginTop: 25
+    },
     linearGradient: {
         flex: 1,
         paddingLeft: 15,
         paddingRight: 15,
         borderRadius: 5
+    },
+    contactInfo: {
+        flex: 1,
+        justifyContent: 'center',
+        marginBottom: 80
+    },
+    maxImg: {
+        width: '100%',
+        height: '100%'
+    },
+    bImage: {
+        flex: 1,
+        width: null,
+        height: null
     },
     pageStyle: {
         backgroundColor: '#E8D825'
@@ -128,10 +184,18 @@ const styles = StyleSheet.create({
     containerText: {
         color: '#fff'
     },
-    HeaderText: {
-        fontSize: 22,
-        marginTop: 25,
+    h1: {
+        fontSize: 26,
+        fontWeight: 'bold',
+        marginLeft: 10,
         color: '#fff'
+    },
+    headerh1: {
+        fontSize: 26,
+        fontWeight: 'bold',
+        marginLeft: 10,
+        color: '#fff',
+        marginTop: 23
     },
     aboutBtnText: {
         color: '#000',
@@ -149,11 +213,13 @@ const styles = StyleSheet.create({
         width: 160
     },
     buttonWrapper: {
-        backgroundColor: '#E8D825',
         flex: 1,
-        alignItems: 'stretch',
         flexDirection: 'row',
         flexWrap: 'nowrap',
         justifyContent: 'space-around'
+    },
+    topHeader: {
+        height: 60,
+        backgroundColor: 'transparent'
     }
 });
