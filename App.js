@@ -69,7 +69,9 @@ class HomeScreen extends React.Component {
                     </Image>
                 </View>
                 <View style={styles.pageStyle}>
-                    <Image source={require('./assets/W6Qnzwf.jpg')} style={styles.bImage} />
+                    <Image source={require('./assets/W6Qnzwf.jpg')} style={styles.bImage}>
+                        <Text style={styles.h1}>BARCELONA</Text>
+                    </Image>
                 </View>
                 <View style={styles.pageStyle}>
                     <Image source={require('./assets/ny.jpg')} style={ styles.bImage } >
@@ -92,11 +94,10 @@ class AboutScreen extends React.Component {
                 <Image source={require('./assets/icbmqjdu.png')} style={styles.maxImg}>
                     <View style={styles.textWrapper}>
                         <Text style={styles.h1}>ABOUT</Text>
-                        <Text style={{color: '#fff', marginTop: 15}}>This is where an about text would be placed. There would here sit an explanation of this application or of something entirely different.</Text>
-                        <Text style={{ color: '#fff', marginTop: 15 }}>This is where an about text would be placed. There would here sit an explanation of this application or of something entirely different.</Text>
-                        <Text style={{ color: '#fff', marginTop: 15 }}>This is where an about text would be placed. There would here sit an explanation of this application or of something entirely different.</Text>
-                        <Text style={{ color: '#fff', marginTop: 15 }}>This is where an about text would be placed. There would here sit an explanation of this application or of something entirely different.</Text>
-                        <Text style={{ color: '#fff', marginTop: 15 }}>This is where an about text would be placed. There would here sit an explanation of this application or of something entirely different.</Text>
+                        <Text style={{ color: '#fff', marginTop: 15, marginLeft: 15 }}>This is where an about text would be placed. There would here sit an explanation of this application or of something entirely different. This is where an about text would be placed. There would here sit an explanation of this application or of something entirely different. This is where an about text would be placed. There would here sit an explanation of this application or of something entirely different. 
+                            This is where an about text would be placed. There would here sit an explanation of this application or of something entirely different. This is where an about text would be placed. There would here sit an explanation of this application or of something entirely different. This is where an about text would be placed. There would here sit an explanation of this application or of something entirely different.
+                            This is where an about text would be placed. There would here sit an explanation of this application or of something entirely different. This is where an about text would be placed. There would here sit an explanation of this application or of something entirely different. This is where an about text would be placed. There would here sit an explanation of this application or of something entirely different.
+                        </Text>
                     </View>
                 </Image>
             </View>
@@ -111,28 +112,53 @@ class ContactScreen extends React.Component {
             <ScrollView style={styles.pageStyle}>
                 <Image source={require('./assets/icbmqjdu.png')} style={styles.bImage}>
                     <View style={styles.contactInfo}>
+                        <Image source={require('./assets/jslogo.png')} style={styles.avatarImg}/>
                         <Text style={styles.h1}>Christoffer Bäckström</Text>
-                        <Text style={styles.h1}>test@test.com</Text>
-                        <Text style={styles.h1}>070-1444553</Text>
-                        <Text style={styles.h1}>65432 Karlstad</Text>
+                        <Text style={styles.h2}>test@test.com</Text>
+                        <Text style={styles.h2}>070-1444553</Text>
+                        <Text style={styles.h2}>65432 Karlstad</Text>
                     </View>
                     <View style={styles.contactInfo}>
+                        <Image source={require('./assets/jslogo.png')} style={styles.avatarImg} />
                         <Text style={styles.h1}>Christoffer Bäckström</Text>
-                        <Text style={styles.h1}>test@test.com</Text>
-                        <Text style={styles.h1}>070-1444553</Text>
-                        <Text style={styles.h1}>65432 Karlstad</Text>
+                        <Text style={styles.h2}>test@test.com</Text>
+                        <Text style={styles.h2}>070-1444553</Text>
+                        <Text style={styles.h2}>65432 Karlstad</Text>
                     </View>
                     <View style={styles.contactInfo}>
+                        <Image source={require('./assets/jslogo.png')} style={styles.avatarImg} />
                         <Text style={styles.h1}>Christoffer Bäckström</Text>
-                        <Text style={styles.h1}>test@test.com</Text>
-                        <Text style={styles.h1}>070-1444553</Text>
-                        <Text style={styles.h1}>65432 Karlstad</Text>
+                        <Text style={styles.h2}>test@test.com</Text>
+                        <Text style={styles.h2}>070-1444553</Text>
+                        <Text style={styles.h2}>65432 Karlstad</Text>
                     </View>
                     <View style={styles.contactInfo}>
+                        <Image source={require('./assets/jslogo.png')} style={styles.avatarImg} />
                         <Text style={styles.h1}>Christoffer Bäckström</Text>
-                        <Text style={styles.h1}>test@test.com</Text>
-                        <Text style={styles.h1}>070-1444553</Text>
-                        <Text style={styles.h1}>65432 Karlstad</Text>
+                        <Text style={styles.h2}>test@test.com</Text>
+                        <Text style={styles.h2}>070-1444553</Text>
+                        <Text style={styles.h2}>65432 Karlstad</Text>
+                    </View>
+                    <View style={styles.contactInfo}>
+                        <Image source={require('./assets/jslogo.png')} style={styles.avatarImg} />
+                        <Text style={styles.h1}>Christoffer Bäckström</Text>
+                        <Text style={styles.h2}>test@test.com</Text>
+                        <Text style={styles.h2}>070-1444553</Text>
+                        <Text style={styles.h2}>65432 Karlstad</Text>
+                    </View>
+                    <View style={styles.contactInfo}>
+                        <Image source={require('./assets/jslogo.png')} style={styles.avatarImg} />
+                        <Text style={styles.h1}>Christoffer Bäckström</Text>
+                        <Text style={styles.h2}>test@test.com</Text>
+                        <Text style={styles.h2}>070-1444553</Text>
+                        <Text style={styles.h2}>65432 Karlstad</Text>
+                    </View>
+                    <View style={styles.contactInfo}>
+                        <Image source={require('./assets/jslogo.png')} style={styles.avatarImg} />
+                        <Text style={styles.h1}>Christoffer Bäckström</Text>
+                        <Text style={styles.h2}>test@test.com</Text>
+                        <Text style={styles.h2}>070-1444553</Text>
+                        <Text style={styles.h2}>65432 Karlstad</Text>
                     </View>
                 </Image>
             </ScrollView>
@@ -190,6 +216,11 @@ const styles = StyleSheet.create({
         marginLeft: 10,
         color: '#fff'
     },
+    h2: {
+        fontSize: 22,
+        marginLeft: 10,
+        color: '#fff'
+    },
     headerh1: {
         fontSize: 26,
         fontWeight: 'bold',
@@ -221,5 +252,12 @@ const styles = StyleSheet.create({
     topHeader: {
         height: 60,
         backgroundColor: 'transparent'
+    },
+    avatarImg: {
+        borderWidth: 0,
+        borderColor: '#fff',
+        margin: 15,
+        width: 128,
+        borderRadius: 100
     }
 });
