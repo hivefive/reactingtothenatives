@@ -1,7 +1,22 @@
 import React from 'react';
-import { StyleSheet, Text, View, ScrollView, Image, ViewPagerAndroid, TouchableHighlight } from 'react-native';
+import { StyleSheet, Text, View, ScrollView, Image, ViewPagerAndroid, TouchableHighlight, Platform } from 'react-native';
 import { StackNavigator } from 'react-navigation';
 import { LinearGradient } from 'react-native-linear-gradient';
+import { Constants, Location, Permissions } from 'expo';
+
+function getMovies () {
+    let n = Math.floor(Math.random() * 3);
+    console.log(n);
+    return fetch('https://facebook.github.io/react-native/movies.json')
+        .then((response) => response.json())
+        .then((responseJson) => {
+            console.log(responseJson.movies[n].title);
+            return responseJson.movies[n].title;
+        })
+        .catch((error) => {
+            console.log(error);
+        });
+}
 
 function getSiteNav (title) {
     return {
@@ -26,12 +41,24 @@ function getSiteNav (title) {
     }
 }
 
-class Button extends React.Component {
+class NavButton extends React.Component {
     render() {
         return (
             <TouchableHighlight onPress={() => { this.props.onPress() }} underlayColor='#fff'>
-                <View style={styles.aboutBtn}>
-                    <Text style={styles.aboutBtnText}>{this.props.title}</Text>
+                <View style={styles.navBtn}>
+                    <Text style={styles.btnText}>{this.props.title}</Text>
+                </View>
+            </TouchableHighlight>
+        )
+    }
+}
+
+class GetButton extends React.Component {
+    render() {
+        return (
+            <TouchableHighlight onPress={() => { getMovies() }} underlayColor='#fff'>
+                <View style={styles.navBtn}>
+                    <Text style={styles.btnText}>{this.props.title}</Text>
                 </View>
             </TouchableHighlight>
         )
@@ -40,25 +67,61 @@ class Button extends React.Component {
 
 class HomeScreen extends React.Component {
 
+    constructor(props) {
+        super(props);
+        this.state = {
+            location: null,
+            errorMessage: null
+        }
+    }
+
+    componentWillMount() {
+        if (Platform.OS === 'android' && !Constants.isDevice) {
+            this.setState({
+                errorMessage: 'Doesn\'t work on Sketch on Android simulator'
+            })
+        } else {
+            this._getLocation();
+        }
+    }
+
+    _getLocation= async () => {
+        let { status } = await Permissions.askAsync(Permissions.LOCATION);
+        if (status !== 'granted') {
+            this.setState({
+                errorMessage: 'Permission to access location has been denied.'
+            })
+        }
+
+        let location = await Location.getCurrentPositionAsync({});
+        this.setState({ location });
+
+        console.log(location);
+    }
+
     static navigationOptions = getSiteNav('Gallery');
     render() {
         const { navigate } = this.props.navigation;
+        let location = 'Loading...';
         return (
             <ViewPagerAndroid
                 style={styles.container}
                 initialPage={0}>
                 <View style={styles.pageStyle}>
-                    <Image source={require('./assets/icbmqjdu.png')} style={styles.bImage} >
+                    <Image source={require('./assets/icbmqjdu.png')} style={styles.bImage}>
                         <View style={styles.buttonWrapper}>
-                            <Button
-                                style={styles.aboutBtn}
+                            <NavButton
+                                style={styles.navBtn}
                                 title="About"
                                 onPress={() => navigate('About')}
                             />
-                            <Button
-                                style={styles.aboutBtn}
+                            <NavButton
+                                style={styles.navBtn}
                                 title="Contact"
                                 onPress={() => navigate('Contact')}
+                            />
+                            <GetButton
+                                title="Get Movie"
                             />
                         </View>
                     </Image>
@@ -228,12 +291,12 @@ const styles = StyleSheet.create({
         color: '#fff',
         marginTop: 23
     },
-    aboutBtnText: {
+    btnText: {
         color: '#000',
         fontWeight: 'bold',
         textAlign: 'center'
     },
-    aboutBtn: {
+    navBtn: {
         backgroundColor: '#fff',
         marginTop: 15,
         padding: 15,
@@ -241,7 +304,7 @@ const styles = StyleSheet.create({
         borderWidth: 2,
         borderRadius: 3,
         borderColor: '#fefefe',
-        width: 160
+        width: 105
     },
     buttonWrapper: {
         flex: 1,
