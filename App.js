@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View, ScrollView, Image, ViewPagerAndroid, TouchableHighlight, Platform } from 'react-native';
 import { StackNavigator } from 'react-navigation';
 import { LinearGradient } from 'react-native-linear-gradient';
-import { Constants, Location, Permissions } from 'expo';
+import { Constants, Location, Permissions, MapView } from 'expo';
 
 function getMovies () {
     let n = Math.floor(Math.random() * 3);
@@ -102,7 +102,21 @@ class HomeScreen extends React.Component {
     static navigationOptions = getSiteNav('Gallery');
     render() {
         const { navigate } = this.props.navigation;
-        let location = 'Loading...';
+        let location = <Text>Loading...</Text>;
+
+        if (this.state.errorMessage) {
+            location = <Text>{this.state.errorMessage}</Text>;
+        } else if (this.state.location) {
+            location = <MapView
+                style={{ flex: 1 }}
+                initialRegion={{
+                    latitude: this.state.location.coords.latitude,
+                    longitude: this.state.location.coords.longitude,
+                    latitudeDelta: 0.0922,
+                    longitudeDelta: 0.0421,
+                }}
+            />
+        }
         return (
             <ViewPagerAndroid
                 style={styles.container}
@@ -127,11 +141,6 @@ class HomeScreen extends React.Component {
                     </Image>
                 </View>
                 <View style={styles.pageStyle}>
-                    <Image source={require('./assets/icbmqjdu.png')} style={styles.bImage} >
-                        <Text style={styles.h1}>Second page</Text>
-                    </Image>
-                </View>
-                <View style={styles.pageStyle}>
                     <Image source={require('./assets/W6Qnzwf.jpg')} style={styles.bImage}>
                         <Text style={styles.h1}>BARCELONA</Text>
                     </Image>
@@ -143,6 +152,11 @@ class HomeScreen extends React.Component {
                 </View>
                 <View style={styles.pageStyle}>
                     <Image source={require('./assets/12352.jpg')} style={styles.bImage} />
+                </View>
+                <View style={styles.pageStyle}>
+                    <Image source={require('./assets/icbmqjdu.png')} style={styles.bImage} >
+                    {location}
+                    </Image>
                 </View>
             </ViewPagerAndroid>
         );
